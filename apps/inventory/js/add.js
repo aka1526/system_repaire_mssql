@@ -100,6 +100,15 @@ for (x in arr_sec) {
 $("#section").append(sec_txt);
 $("#section").val(section);
 
+for (x in arr_os) {
+    var os_txt;
+    //  if (arr_brand[x]["type"] == type) {
+    os_txt += '<option value=' + arr_os[x]["os_id"] + '>' + arr_os[x]["os_name"] + '</option>';
+    // }
+
+}
+
+$("#os_name").append(os_txt);
 
 
 for (x in arr_stat) {

@@ -31,6 +31,12 @@
   $statuss = fetch_all($fields, $table, $conditions);
  
 
+  $fields = "*";
+  $table = "osname";
+  $conditions = " WHERE status = 'Y' ";
+  $osnames = fetch_all($fields, $table, $conditions);
+
+
 
 ?>
 <div class="content-wrapper">
@@ -167,6 +173,14 @@
                       placeholder="Hard disk Capacity"  >
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label for="os_name" class="col-sm-2 col-form-label">Operating system <span class="text-danger">*</span></label>
+                  <div class="col-sm-10">
+                    <select name="os_name" id="os_name" class="form-control" required>
+                      <option value="">-- Please Select OS --</option>
+                    </select>
+                  </div>
+                </div>
 
                 <div class="form-group row">
                   <label for="monitor_model" class="col-sm-2 col-form-label">Monitor<span
@@ -221,5 +235,6 @@ var arr_sec = <?php echo json_encode($sections);?>;
 var arr_type = <?php echo json_encode($types);?>;
 var arr_brand = <?php echo json_encode($brand);?>;
 var arr_stat = <?php echo json_encode($statuss);?>;
+var arr_os = <?php echo json_encode($osnames);?>;
 
 </script>

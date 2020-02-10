@@ -76,6 +76,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+   <!-- fullCalendar -->
+  <link rel="stylesheet" href="plugins/fullcalendar/main.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar-interaction/main.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar-daygrid/main.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar-timegrid/main.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar-bootstrap/main.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
    <!-- SweetAlert2 -->
@@ -140,11 +147,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
   <script src="dist/js/demo.js"></script>
+
+<!-- FLOT CHARTS 
+<script src="plugins/flot/jquery.flot.js"></script>
+-->
+<script src="plugins/flot/jquery.flot.min.js"></script>
+
+
+
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="plugins/flot-old/jquery.flot.resize.min.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="plugins/flot-old/jquery.flot.pie.min.js"></script>
+
   <!-- DataTables -->
   <script src="plugins/datatables/jquery.dataTables.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
   <!-- Summernote -->
   <script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+  <!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+
+    <!-- fullCalendar 2.2.5 -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/fullcalendar/main.min.js"></script>
+<script src="plugins/fullcalendar-daygrid/main.min.js"></script>
+<script src="plugins/fullcalendar-timegrid/main.min.js"></script>
+<script src="plugins/fullcalendar-interaction/main.min.js"></script>
+<script src="plugins/fullcalendar-bootstrap/main.min.js"></script>
+ 
   <?php
   if(!empty($app_route_js[$page]) && file_exists($app_route_js[$page])){
 	  
@@ -161,6 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         height: 400
       });
   })
+
 </script>
 
 </body>

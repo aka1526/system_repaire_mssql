@@ -5,10 +5,10 @@
   $req = array(
     "inventory_id" => $_GET["inventory_id"]
   );
+  
   $value = " WHERE inventory_id = :inventory_id  order by id desc ";
   $repair  = fetch_all($fields,$table,$value,$req);
- 
-  $arr_repair_id = array();
+   $arr_repair_id = array();
   foreach($repair as $v){
     $arr_repair_id[] = $v["id"];
   }
