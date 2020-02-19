@@ -50,6 +50,7 @@ if($_svhost=="sqlsrv"){
 
 $_svhost="sqlsrv";  
 if($_svhost=="sqlsrv"){
+
     $db_config = array(
 		"DB_type" => "sqlsrv",
         "DB_host" => "xxxxx",
@@ -59,6 +60,7 @@ if($_svhost=="sqlsrv"){
         "DB_charset" => "utf8",
     );
 }else{
+
     $db_config = array(
 	    "DB_type" => "mysql",
         "DB_host" => "127.0.0.1",
