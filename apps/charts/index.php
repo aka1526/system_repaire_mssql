@@ -109,7 +109,7 @@ if($db_config['DB_type'] =="mysql"){
 	left outer join 
 		(
 						SELECT DATE_FORMAT(doc_date, '%m') AS months , COUNT(*)as total
-						FROM REPAIR 
+						FROM repair 
 						WHERE DATE_FORMAT(doc_date, '%Y')= DATE_FORMAT(CURRENT_DATE, '%Y') 
 						GROUP BY DATE_FORMAT(doc_date, '%Y'), DATE_FORMAT(doc_date, '%m')
 		 ) re on re.months=allm.month ; ";
