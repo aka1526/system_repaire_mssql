@@ -17,7 +17,9 @@ if(isset($_GET["action"]) && $_GET["action"] == "add_services"){
 				"doc_refer" => $_POST["doc_refer"],
 				"tel" => $_POST["tel"],
 				"create_date_time" => date("Y-m-d H:i:s"),
-				 "due_date" => $_POST["due_date"],
+				"due_date" => $_POST["due_date"],
+				"line_token" => $_POST["line_token"],
+				 
 			);
 
 			$required = array(
@@ -32,6 +34,11 @@ if(isset($_GET["action"]) && $_GET["action"] == "add_services"){
 				header("location:../../index.php?page=services");
 				exit();
 			}
+
+			$inven_name="";
+			if($req["inven_id"]!=""){
+				$inven_name=getInvenName($req["inven_id"]);
+			}	
 
 		try{
 
@@ -54,10 +61,14 @@ if(isset($_GET["action"]) && $_GET["action"] == "add_services"){
 			$stmt->bindParam(":due_date",$req["due_date"]);
 			 
 			$result = $stmt->execute();
-
+           // 
 			if($result){
 				$_SESSION["STATUS"] = TRUE;
 				$_SESSION["MSG"] = "Insert Success.";
+			 
+				$msg = " วันที่ :".$req["docdate"] ." \nรายการขอยืม :  ".$inven_name ."\nโดย " . $req["borrow_name"] ;
+				$msg .= "\nเหตุผล :" .$req["remark"] ."\nเบอร์ติดต่อ ". $req["tel"];
+				SendLineNotify($req["line_token"],$msg);
 				header("location:../../index.php?page=services");
 				exit();
 			 
@@ -85,6 +96,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "add_services"){
 				"create_date_time" => date("Y-m-d H:i:s"),
 				"due_date" => $_POST["due_date"],
 				"row_refer" => $_POST["row_refer"],
+				"line_token" => $_POST["line_token"],
 			);
 
 			$required = array(
@@ -100,6 +112,11 @@ if(isset($_GET["action"]) && $_GET["action"] == "add_services"){
 				exit();
 			}
 
+			$inven_name="";
+			if($req["inven_id"]!=""){
+				$inven_name=getInvenName($req["inven_id"]);
+			}	
+			
 		try{
 
 			$sql = "INSERT INTO services ( docdate, inven_id, borrow_name, sec_id, type_name, type_in, type_out, remark, doc_refer, tel, create_date_time,due_date,row_refer) values   ";
@@ -124,6 +141,10 @@ if(isset($_GET["action"]) && $_GET["action"] == "add_services"){
 			if($result){
 				$_SESSION["STATUS"] = TRUE;
 				$_SESSION["MSG"] = "Insert Success.";
+				$msg = " วันที่คืน :".$req["docdate"] ." \nรายการคืน :  ".$inven_name ."\nโดย " . $req["borrow_name"] ;
+				$msg .= "\nเหตุผล :" .$req["remark"] ."\nเบอร์ติดต่อ ". $req["tel"];
+				SendLineNotify($req["line_token"],$msg);
+				 
 				header("location:../../index.php?page=services");
 				exit();
 			 

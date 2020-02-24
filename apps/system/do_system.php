@@ -8,6 +8,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "update_system"){
     $req = array(
         "system_title" => filter_var_string($_POST["title"], "System Title"),
         "system_name" => filter_var_string($_POST["name"], "System Name"),
+		"line_token" => $_POST["line_token"],
+		
     );
 
     $required = array(
@@ -25,12 +27,14 @@ if(isset($_GET["action"]) && $_GET["action"] == "update_system"){
 
 try{
 
-    $sql = "UPDATE system SET ";
+    $sql = " UPDATE system SET ";
     $sql .= " title = :system_title, ";
+	$sql .= " line_token = :line_token, ";
     $sql .= " name = :system_name ";
     $sql .= "  WHERE id = '1'  ";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":system_title",$req["system_title"]);
+	$stmt->bindParam(":line_token",$req["line_token"]);
     $stmt->bindParam(":system_name",$req["system_name"]);
     $result = $stmt->execute();
 

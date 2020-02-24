@@ -219,8 +219,10 @@ CREATE TABLE [dbo].[system](
 	[id] [int] NOT NULL,
 	[title] [nvarchar](50) NULL,
 	[name] [nvarchar](500) NULL,
+	[line_token] [nvarchar](100) NULL,
 	[updated_at] [nvarchar](50) NULL,
 	[created_at] [nvarchar](50) NULL,
+	
  CONSTRAINT [PK_system] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

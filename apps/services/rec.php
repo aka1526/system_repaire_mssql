@@ -68,6 +68,15 @@
   $osnames = fetch_all($fields, $table, $conditions);
 
 
+  $fields = "line_token";
+  $table = "system";
+  $value = " WHERE id = '1' ";
+  $_token = fetch_all($fields, $table, $value);
+  $line_token = "";
+  foreach($_token as $token){
+   $line_token=$token["line_token"];
+  }
+  
 ?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -100,15 +109,13 @@
             <div class="card-body">
               <form id="forminfo" class="form-horizontal" enctype="multipart/form-data"
                 action="apps/services/do_services.php?action=rec_services" method="POST" autocomplete="off">
-                
+                 <input type="hidden" name="line_token" id="line_token" value="<?php echo $line_token;?>"> 
 				 <input  type="hidden" name="type_in" 	id="type_in"  	value="0">
 				 <input  type="hidden" name="type_out" 	id="type_in"   	value="1">
 				 <input  type="hidden" name="type_name" id="type_name" 	value="REC">
-				 
-				 
-				 <input  type="hidden" name="inven_id" 	id="inven_id"  	value="<?=$services["inven_id"];?>">
-				 <input  type="hidden" name="sec_id" 	id="sec_id"  	value="<?=$services["sec_id"];?>">
-				  <input  type="hidden" name="row_refer" id="row_refer" value="<?=$services["row_index"];?>">
+				 <input  type="hidden" name="inven_id" 	id="inven_id"  	value="<?php echo $services["inven_id"];?>">
+				 <input  type="hidden" name="sec_id" 	id="sec_id"  	value="<?php echo $services["sec_id"];?>">
+				 <input  type="hidden" name="row_refer" id="row_refer" value="<?php echo $services["row_index"];?>">
 				 
 				 
                 <div class="form-group row">
@@ -137,7 +144,7 @@
                 <div class="form-group row">
                   <label for="inventory" class="col-sm-2 col-form-label">inventory<span class="text-danger">*</span></label>
                   <div class="col-sm-10">
-                     <input type="text" class="form-control"   value="<?php echo $inven_txt[$services["inven_id"]] ;?>" readonly >
+                     <input type="text" class="form-control"  id="inventory" name="inventory" value="<?php echo $inven_txt[$services["inven_id"]] ;?>" readonly >
                   </div>
                 </div>
                
@@ -146,14 +153,14 @@
                   <label for="borrow_name" class="col-sm-2 col-form-label">Return Name  /ชื่อผู้คืน
                    </label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" value="<?=$services["borrow_name"];?>" >
+                    <input type="text" class="form-control" id="borrow_name" name="borrow_name" value="<?php echo $services["borrow_name"];?>" required>
                   </div>
                 </div>
               
                 <div class="form-group row">
                   <label for="section" class="col-sm-2 col-form-label">Section/แผนก <span class="text-danger">*</span></label>
                   <div class="col-sm-10">
-                      <input type="text" class="form-control"    value="<?=$sec_txt[$services["sec_id"]];?>" readonly >
+                      <input type="text" class="form-control" id="section" name="section"   value="<?php echo $sec_txt[$services["sec_id"]];?>" readonly >
                   </div>
                 </div>
  
@@ -162,7 +169,7 @@
                   <label for="remark" class="col-sm-2 col-form-label">Reason/เหตุผล<span
                       class="text-danger"></span></label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="remark" name="remark" value="" placeholder="Reason/เหตุผล"  >
+                    <input type="text" class="form-control" id="remark" name="remark" value="<?echo $services["remark"] ;?>"    readonly >
                   </div>
                 </div>
  
@@ -172,7 +179,7 @@
                       class="text-danger"></span>
 					</label>
                   <div class="col-sm-10">
-                    <input class="form-control"  type="date" name="due_date" id="due_date"    >
+                    <input class="form-control"  type="date" name="due_date" id="due_date"  required  >
                   </div>
                 </div>
 				
@@ -219,7 +226,7 @@
   var msg = "<?php echo isset($_SESSION["MSG"]) ? $_SESSION["MSG"] : ""  ;?>";
   var status = "<?php echo isset($_SESSION["STATUS"]) ? $_SESSION["STATUS"] : "" ; ?>";
   var section = "<?php echo isset($inventory["section"]) ? $inventory["section"] :"";?>";
-  var inven_id = "<?php echo  $_id;?>";
+  var inven_id = "<?php echo  isset($services["inven_id"]);?>";
   
 
 </script>

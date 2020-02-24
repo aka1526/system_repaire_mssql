@@ -44,6 +44,13 @@ defined('APPS') OR exit('No direct script access allowed');
                       value="<?php echo $system["name"];?>" placeholder="System Name" required>
                   </div>
                 </div>
+				<div class="form-group row">
+                  <label for="line_token" class="col-sm-2 col-form-label">Line Token Key <span class="text-danger"></span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="line_token" name="line_token"
+                      value="<?php echo $system["line_token"];?>" placeholder="Line Token Key" >
+                  </div>
+                </div>
                 <div class="form-group row">
                   <div class="offset-sm-2 col-sm-10">
                     <button type="submit" class="btn btn-danger"><i class="fas fa-check-circle"></i> Submit</button>

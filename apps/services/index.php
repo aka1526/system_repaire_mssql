@@ -80,6 +80,18 @@
     $os_txt[$os["os_id"]] = $os["os_name"];
   }
 
+
+  $fields = "line_token";
+  $table = "system";
+  $value = " WHERE id = '1' ";
+ 
+  $_token = fetch_all($fields, $table, $value);
+  $line_token = "";
+  foreach($_token as $token){
+   $line_token=$token["line_token"];
+  }
+  
+  
 ?>
 
 <div class="content-wrapper">
@@ -112,7 +124,9 @@
             
             <div class="card-body">
               <form action="apps/inventory/do_inventory.php?action=delete_all" id="frm" method="POST">
-                <div class="table-responsive">
+                <input type="hidden" name="line_token" id="line_token" value="<?php echo $line_token;?>"> 
+
+			   <div class="table-responsive">
                   <table class="table table-striped table-hover table-sm">
                     <thead>
                       <tr>

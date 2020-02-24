@@ -208,6 +208,53 @@ function rows_count($table,$wh=null){
    
     return $count;
 }
+
+function getInvenName( $inven_id = NULL){
+  global $conn;
+	$inven_name="";
+	
+    if($inven_id==""){
+		return $inven_name;	
+	}
+	$sql = "select name";
+	$sql .= " from inventory ";
+	$sql .= " WHERE id = '". $inven_id."'; ";
+	
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+	$data = array();
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	if($data === FALSE){
+		$inven_name="";
+	}else{
+		$inven_name = $data["name"];
+	}
+	return $inven_name;		
+}
+
+
+ 
+ function   SendLineNotify($sToken=null,$sMessage=null){
+  	$chOne = curl_init(); 
+	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+	curl_setopt( $chOne, CURLOPT_POST, 1); 
+	curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+	$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+	curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+	$result = curl_exec( $chOne ); 
+ 	if(curl_error($chOne)) {
+		curl_close( $chOne );   
+		return true;
+	} else {
+		curl_close( $chOne );   
+		return false;
+	}
+	
+	
+ }
  
 
 ?>

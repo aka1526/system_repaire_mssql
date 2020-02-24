@@ -75,6 +75,9 @@ if($_svhost=="sqlsrv"){
 ## LOGIN using
 username: admin 
 password: 123456
+
+### DEMO http://www.satangapp.in/itcare
+
 ### *********************** Screenshot *******************************************
 		
 ![GitHub Logo](https://github.com/aka1526/system_repaire_mssql/blob/master/blob/master/screenshot/p1.png)
@@ -86,6 +89,7 @@ password: 123456
 ![GitHub Logo](https://github.com/aka1526/system_repaire_mssql/blob/master/blob/master/screenshot/p7.png)
 ![GitHub Logo](https://github.com/aka1526/system_repaire_mssql/blob/master/blob/master/screenshot/p8.png)
 ![GitHub Logo](https://github.com/aka1526/system_repaire_mssql/blob/master/blob/master/screenshot/p9.png)
+![GitHub Logo](https://github.com/aka1526/system_repaire_mssql/blob/master/blob/master/screenshot/p10.png)
 
 
 [![Build Status](https://img.shields.io/travis/ColorlibHQ/AdminLTE/master.svg)](https://travis-ci.org/ColorlibHQ/AdminLTE)

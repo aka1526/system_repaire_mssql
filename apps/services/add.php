@@ -11,16 +11,12 @@
   $value = " WHERE id like :inventory_id ";
   $inventory = fetch_all($fields,$table,$value,$req);
   $inventorys = fetch_all($fields,$table,$value,$req);
- // echo $_id."ddd";
+ 
  $inventory_id="";
   if($_id =="%" ){
      $_id="";
   }
-  //else{
-   // header("location:./?page=services/add");
-    //exit();
- // }
-
+ 
   $fields = "*";
   $table = "type";
   $conditions = " WHERE status = 'Y' ";
@@ -58,6 +54,16 @@
   $osnames = fetch_all($fields, $table, $conditions);
 
 
+  $fields = "line_token";
+  $table = "system";
+  $value = " WHERE id = '1' ";
+  $_token = fetch_all($fields, $table, $value);
+  $line_token = "";
+  foreach($_token as $token){
+   $line_token=$token["line_token"];
+  }
+  
+  
 ?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -91,10 +97,10 @@
               <form id="forminfo" class="form-horizontal" enctype="multipart/form-data"
                 action="apps/services/do_services.php?action=add_services" method="POST" autocomplete="off">
                 
+				 <input type="hidden" name="line_token" id="line_token" value="<?php echo $line_token;?>"> 
 				 <input  type="hidden" name="type_in" 	id="type_in"  	value="1">
 				 <input  type="hidden" name="type_out" 	id="type_in"   	value="0">
 				 <input  type="hidden" name="type_name" id="type_name" 	value="ISSUE">
-				  
 				  
                 <div class="form-group row">
                   <label for="username" class="col-sm-2 col-form-label"></label>
