@@ -75,6 +75,9 @@ if($_svhost=="sqlsrv"){
 ## LOGIN using
 username: admin 
 password: 123456
+
+### WEGDEMO http://www.satangapp.in/itcare
+
 ### *********************** Screenshot *******************************************
 		
 ![GitHub Logo](https://github.com/aka1526/system_repaire_mssql/blob/master/blob/master/screenshot/p1.png)
