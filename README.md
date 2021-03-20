@@ -76,7 +76,6 @@ if($_svhost=="sqlsrv"){
 username: admin 
 password: 123456
 
-### DEMO http://www.satangapp.in/itcare
 
 ### *********************** Screenshot *******************************************
 		
